@@ -943,6 +943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 2afa802f2736adc40b60fe79d7bbb76a, type: 3}
+      propertyPath: m_Name
+      value: PT_Medieval_Village_Fence_03 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2afa802f2736adc40b60fe79d7bbb76a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 966.55
@@ -983,10 +987,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 2afa802f2736adc40b60fe79d7bbb76a, type: 3}
-      propertyPath: m_Name
-      value: PT_Medieval_Village_Fence_03 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1000,6 +1000,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1820260390033176, guid: 53a6c19f2083c0b4d8804262251b5700, type: 3}
+      propertyPath: m_Name
+      value: Montain 002
+      objectReference: {fileID: 0}
     - target: {fileID: 4130962255573030, guid: 53a6c19f2083c0b4d8804262251b5700, type: 3}
       propertyPath: m_LocalPosition.x
       value: 757.6
@@ -1040,10 +1044,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1820260390033176, guid: 53a6c19f2083c0b4d8804262251b5700, type: 3}
-      propertyPath: m_Name
-      value: Montain 002
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1057,6 +1057,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1474606528895484, guid: 40c1bf560aefc564e8c8a2e8ce320cb1, type: 3}
+      propertyPath: m_Name
+      value: Montain 003
+      objectReference: {fileID: 0}
     - target: {fileID: 4996772000708724, guid: 40c1bf560aefc564e8c8a2e8ce320cb1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 744.4
@@ -1097,10 +1101,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1474606528895484, guid: 40c1bf560aefc564e8c8a2e8ce320cb1, type: 3}
-      propertyPath: m_Name
-      value: Montain 003
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1114,6 +1114,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1137594473374074, guid: b42026f4025151740b60b4768e2c5092, type: 3}
+      propertyPath: m_Name
+      value: Montain 004
+      objectReference: {fileID: 0}
     - target: {fileID: 4705846860373942, guid: b42026f4025151740b60b4768e2c5092, type: 3}
       propertyPath: m_LocalPosition.x
       value: 754.3
@@ -1153,10 +1157,6 @@ PrefabInstance:
     - target: {fileID: 4705846860373942, guid: b42026f4025151740b60b4768e2c5092, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1137594473374074, guid: b42026f4025151740b60b4768e2c5092, type: 3}
-      propertyPath: m_Name
-      value: Montain 004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

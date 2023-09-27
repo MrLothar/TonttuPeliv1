@@ -1,1 +1,141 @@
-Tämä on vettä
+[HideInInspector] public float walkSpeed;
+[HideInInspector] public float sprintSpeed;
+
+[Header("Keybinds")]
+public KeyCode jumpKey = KeyCode.Space; // what key is used to jump
+public KeyCode dashKey = KeyCode.LeftShift; // what key is used to dash
+
+[Header("Ground Check")]
+public float playerHeight; // how tall the player is
+public LayerMask whatIsGround; // what layers are considered ground
+bool grounded; // whether the player is on the ground or not
+
+public Transform orientation; // what direction the player is facing
+
+float horizontalInput;
+float verticalInput;
+
+Vector3 moveDirection;
+
+Rigidbody rb;
+
+private void Start()
+{
+    rb = GetComponent<Rigidbody>();
+    rb.freezeRotation = true;
+
+    readyToJump = true;
+    readyToDash = true;
+    dashing = false;
+}
+
+private void Update()
+{
+    // ground check
+    grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+
+    MyInput();
+    SpeedControl();
+
+    // handle drag
+    if (grounded)
+        rb.drag = groundDrag;
+    else
+        rb.drag = 0;
+}
+
+private void FixedUpdate()
+{
+    MovePlayer();
+    FallMultiplier();
+}
+
+private void MyInput()
+{
+    horizontalInput = Input.GetAxisRaw("Horizontal");
+    verticalInput = Input.GetAxisRaw("Vertical");
+
+    // when to jump
+    if (Input.GetKey(jumpKey) && readyToJump && grounded)
+    {
+        readyToJump = false;
+
+        Jump();
+
+        Invoke(nameof(ResetJump), jumpCooldown);
+    }
+
+    // when to dash
+    if (Input.GetKeyDown(dashKey) && readyToDash && !dashing)
+    {
+        readyToDash = false;
+        dashing = true;
+
+        Dash();
+
+        Invoke(nameof(ResetDash), dashCooldown);
+    }
+}
+
+private void MovePlayer()
+{
+    // calculate movement direction
+    moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+    // on ground
+    if (grounded && !dashing)
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+
+    // in air
+    else if (!grounded && !dashing)
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+}
+
+private void SpeedControl()
+{
+    Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+    // limit velocity if needed and not dashing
+    if (flatVel.magnitude > moveSpeed && !dashing)
+    {
+        Vector3 limitedVel = flatVel.normalized * moveSpeed;
+        rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+    }
+}
+
+private void Jump()
+{
+    // reset y velocity
+    rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+    rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+}
+
+private void Dash()
+{
+    // reset x and z velocity
+    rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+
+    // add force in the direction of the movement input
+    rb.AddForce(moveDirection.normalized * dashForce, ForceMode.Impulse);
+}
+
+private void FallMultiplier()
+{
+    // add extra gravity if the player is falling and not holding the jump key
+    if (rb.velocity.y < 0 && !Input.GetKey(jumpKey))
+        rb.AddForce(Vector3.down * fallMultiplier, ForceMode.Acceleration);
+}
+
+private void ResetJump()
+{
+    readyToJump = true;
+}
+
+private void ResetDash()
+{
+    readyToDash = true;
+    dashing = false;
+}
+
+}
